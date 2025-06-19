@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Interview Coach</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f5f6fa;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #4b6cb7, #182848);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+    }
+
+    .cta-btn, .auth-btn {
+      background-color: #00b894;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .auth-buttons {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .features, .steps {
+      padding: 40px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: white;
+    }
+
+    .feature {
+      width: 300px;
+      margin: 20px;
+      text-align: center;
+    }
+
+    .feature i {
+      font-size: 2rem;
+      color: #00b894;
+      margin-bottom: 10px;
+    }
+
+    .steps {
+      background-color: #ecf0f1;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .step-number {
+      background-color: #00b894;
+      color: white;
+      font-weight: bold;
+      padding: 15px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    footer {
+      background-color: #2d3436;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    footer a {
+      color: #00cec9;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 400px;
+      position: relative;
+    }
+
+    .modal-content h3 {
+      margin-top: 0;
+    }
+
+    .modal-content input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 768px) {
+      .step {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .step-number {
+        margin-bottom: 10px;
+      }
+
+      .auth-buttons {
+        position: static;
+        text-align: center;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    
+    <div class="auth-buttons">
+      <button class="auth-btn" onclick="openModal('loginModal')">Login</button>
+      <button class="auth-btn" onclick="openModal('signupModal')">Sign Up</button>
+    </div>
+    <h1><i class="fas fa-robot"></i> AI Interview Coach</h1>
+    <p>Boost your confidence with smart, AI-powered mock interviews</p>
+    <a href="index.html"><button class="cta-btn">Start Practicing</button></a>
+  </header>
+
+  <section class="features">
+    <div class="feature">
+      <i class="fas fa-brain"></i>
+      <h3>AI-Generated Questions</h3>
+      <p>Get tailored technical, behavioral, and situational questions based on your role.</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-comments"></i>
+      <h3>Real-Time Feedback</h3>
+      <p>Receive instant feedback on your answers to improve your performance.</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-chart-line"></i>
+      <h3>Progress Tracking</h3>
+      <p>Analyze your strengths and weaknesses with session summaries.</p>
+    </div>
+  </section>
+
+  <section class="steps">
+    <h2>How It Works</h2>
+    <div class="step">
+      <div class="step-number">1</div>
+      <div>Select your job role, experience level, and question types.</div>
+    </div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <div>Practice your answers in a real interview-like environment.</div>
+    </div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <div>Review AI feedback and improve with every session.</div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 AI Interview Coach | <a href="#">Privacy</a> | <a href="#">Contact</a></p>
+  </footer>
+
+  <!-- Login Modal -->
+  <div class="modal" id="loginModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
+      <h3>Login</h3>
+      <input type="email" placeholder="Email" />
+      <input type="password" placeholder="Password" />
+      <button class="cta-btn">Login</button>
+    </div>
+  </div>
+
+  <!-- Signup Modal -->
+  <div class="modal" id="signupModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('signupModal')">&times;</span>
+      <h3>Sign Up</h3>
+      <input type="text" placeholder="Full Name" />
+      <input type="email" placeholder="Email" />
+      <input type="password" placeholder="Create Password" />
+      <button class="cta-btn">Create Account</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = 'flex';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    // Optional: Close modals on background click
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal')) {
+        event.target.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>

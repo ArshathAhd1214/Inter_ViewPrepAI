@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Interview Prep</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-robot"></i> AI Interview Coach</h1>
+            <p>Practice for your next job interview with our AI-powered coach</p>
+        </header>
+
+        <div class="setup-panel">
+            <h2>Interview Setup</h2>
+            <div class="form-group">
+                <label for="job-role">Desired Job Role:</label>
+                <input type="text" id="job-role" placeholder="e.g., Software Engineer, Marketing Manager">
+            </div>
+            <div class="form-group">
+                <label for="experience-level">Experience Level:</label>
+                <select id="experience-level">
+                    <option value="entry">Entry Level</option>
+                    <option value="mid">Mid Career</option>
+                    <option value="senior">Senior Level</option>
+                    <option value="executive">Executive</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="question-type">Question Types:</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="question-type" value="technical" checked> Technical</label>
+                    <label><input type="checkbox" name="question-type" value="behavioral" checked> Behavioral</label>
+                    <label><input type="checkbox" name="question-type" value="situational"> Situational</label>
+                </div>
+            </div>
+            <button id="start-interview" class="btn">Start Interview</button>
+        </div>
+
+        <div class="interview-panel hidden">
+            <div class="interview-header">
+                <h2>Interview in Progress</h2>
+                <div class="timer">00:00</div>
+            </div>
+            
+            <div class="interview-content">
+                <div class="ai-question">
+                    <div class="avatar ai-avatar"><i class="fas fa-robot"></i></div>
+                    <div class="message">Hello! I'll be your interview coach today. Let's begin with our first question.</div>
+                </div>
+                
+                <div class="user-response">
+                    <div class="avatar user-avatar"><i class="fas fa-user"></i></div>
+                    <div class="message">
+                        <textarea id="user-answer" placeholder="Type your answer here..."></textarea>
+                        <button id="submit-answer" class="btn">Submit Answer</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="feedback-panel hidden">
+                <h3>AI Feedback</h3>
+                <div class="feedback-content">
+                    <div class="strengths">
+                        <h4><i class="fas fa-thumbs-up"></i> Strengths</h4>
+                        <ul class="strengths-list"></ul>
+                    </div>
+                    <div class="improvements">
+                        <h4><i class="fas fa-lightbulb"></i> Areas for Improvement</h4>
+                        <ul class="improvements-list"></ul>
+                    </div>
+                </div>
+                <button id="next-question" class="btn">Next Question</button>
+            </div>
+            
+            <button id="end-interview" class="btn btn-end">End Interview</button>
+        </div>
+
+        <div class="results-panel hidden">
+            <h2>Interview Summary</h2>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="questions-answered">0</div>
+                    <div class="stat-label">Questions Answered</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="interview-duration">00:00</div>
+                    <div class="stat-label">Duration</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="performance-rating">0%</div>
+                    <div class="stat-label">Performance</div>
+                </div>
+            </div>
+            
+            <div class="key-feedback">
+                <h3>Key Feedback Points</h3>
+                <div class="feedback-summary"></div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="restart-interview" class="btn">Practice Again</button>
+                <button id="download-report" class="btn btn-secondary">Download Report</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
